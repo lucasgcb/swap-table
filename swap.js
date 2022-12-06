@@ -11,8 +11,6 @@ function swapValues(){
 
 function removePair(rowId)
 {
-    if(!rowId)
-        rowId = "row-0"
     var row = document.getElementById(rowId);
     row.parentNode.removeChild(row);
 }
@@ -49,5 +47,5 @@ removeButton = document.getElementById('example-remove');
 insertButton = document.getElementById('insert-button');
 swapButton = document.getElementById('swap-button');
 insertButton.addEventListener('click', insertSwapValue);
-removeButton.addEventListener('click', removePair)
+removeButton.addEventListener('click', function() {removePair('row-0')})
 swapButton.addEventListener("click", swapValues);
