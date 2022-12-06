@@ -1,5 +1,21 @@
-.first-cell {
-    min-width: 54.125px
+.swap-cell {
+    min-width: 61.63px
+}
+
+#input-box {
+    width: 300px;
+    height: 300px;
+    resize:both
+}
+
+#output-box {
+    width: 300px;
+    height: 300px;
+    resize:both
+}
+
+.table-button {
+    width: 61.63px
 }
 
 #from-value {
