@@ -8,14 +8,15 @@
 </head>
 
 <body class="bg-dark">
-  <nav class="d-flex justify-content-center navbar navbar-expand-lg navbar-light bg-light"><span class="navbar-brand mb-0 h1">Swap Table</span></nav>
+  <nav class="d-flex justify-content-center navbar navbar-expand-lg navbar-light bg-light"><span
+      class="navbar-brand mb-0 h1">Swap Table</span></nav>
   <div class="d-flex justify-content-center">
     <div class="p-2">
       <div>Swap values</div>
       <div>
-        <input type="text" class="" id="input-box">
+        <textarea id="input-box">
         <button id="swap-button" class="btn-primary">Swap</button>
-        <input type="text" id="output-box">
+        <textarea id="output-box">
       </div>
     </div>
   </div>
@@ -24,14 +25,14 @@
     <div class="p-2">
       <table id="header" class="table table-dark">
         <tr>
-          <td>From</td>
-          <td>To</td>
-          <td>Action</td>
+          <td class="swap-cell">From</td>
+          <td class="swap-cell">To</td>
+          <td class="swap-cell">Action</td>
         </tr>
         <tr>
-          <td><input type="text" maxlength="1" id="from-value"></td>
-          <td><input type="text" maxlength="1" id="to-value"></td>
-          <td><button id="insert-button" class="btn-primary table-button">Insert</button></td>
+          <td class="swap-cell"><input type="text" maxlength="1" id="from-value"></td>
+          <td class="swap-cell"><input type="text" maxlength="1" id="to-value"></td>
+          <td class="swap-cell"><button id="insert-button" class="btn-primary table-button">Insert</button></td>
         </tr>
     </div>
     </tr>
@@ -39,8 +40,8 @@
     <table id="swap-table" class="table table-dark">
       <tr id="row-0">
         <td class="swap-cell">ç</td>
-        <td>c</td>
-        <td><button id="example-remove" class="btn-primary">Delete</button></td>
+        <td class="swap-cell">c</td>
+        <td class="swap-cell"><button id="example-remove" class="btn-primary">Delete</button></td>
       </tr>
     </table>
   </div>
