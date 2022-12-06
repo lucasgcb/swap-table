@@ -20,6 +20,12 @@ function setTable() {
     let pairs = getSwapPairs()
     pairsJSON = JSON.stringify(pairs)
     localStorage.setItem('table', pairsJSON)
+    Swal.fire({
+        icon: 'success',
+        title: 'Saved',
+        text: 'Your swap table has been saved!',
+        footer: '<a href="">It will be here when you come back later.</a>'
+      })
 }
 
 
@@ -145,4 +151,4 @@ swapButton.addEventListener("click", swapValues);
 saveButton.addEventListener("click", setTable);
 loadButton.addEventListener("click", function () { loadTable(getTable()) });
 window.addEventListener('beforeunload', checkChanges);
-window.addEventListener('onload', checkStorageAndLoad);
+window.addEventListener('load', checkStorageAndLoad);
