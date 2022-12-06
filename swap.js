@@ -3,9 +3,10 @@ function swapValues(){
     let output = document.getElementById('output-box')
     let pairs = getSwapPairs()    
     output.value = input.value
-    for (const swapValue in values) {
-        output.replace(swapValue[0], swapValue[1])
-    }
+    pairs.forEach(function(swapValue) {
+      console.log(swapValue)
+      output.value = output.value.replace(swapValue[0], swapValue[1])
+    })
 }
 
 function getSwapPairs()
