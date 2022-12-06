@@ -9,6 +9,12 @@ function swapValues() {
     })
 }
 
+function checkStorageAndLoad(){
+    storageTablePairs = getTable()
+    if (storageTablePairs)
+        loadTable(storageTablePairs)
+}
+
 
 function setTable() {
     let pairs = getSwapPairs()
@@ -139,3 +145,4 @@ swapButton.addEventListener("click", swapValues);
 saveButton.addEventListener("click", setTable);
 loadButton.addEventListener("click", function () { loadTable(getTable()) });
 window.addEventListener('beforeunload', checkChanges);
+window.addEventListener('onload', checkStorageAndLoad);
