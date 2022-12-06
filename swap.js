@@ -12,13 +12,14 @@ function swapValues() {
 
 function setTable() {
     let pairs = getSwapPairs()
-    localStorage.setItem('table', pairs)
+    pairsJSON = JSON.stringify(pairs)
+    localStorage.setItem('table', pairsJSON)
 }
 
 
-
 function getTable() {
-    pairs = localStorage.getItem('table')
+    pairsJSON = localStorage.getItem('table')
+    pairs = JSON.parse(pairsJSON)
     insertStoredTable(pairs)
 }
 
@@ -40,7 +41,10 @@ function getSwapPairs() {
 }
 
 function insertStoredTable(pairs) {
-    removePair('row-0')
+    var demoRow = document.getElementById("row-0");
+    if(typeof(demoRow) != 'undefined' && demoRow != null){
+        removePair('row-0')
+    }
     let table = document.getElementById('swap-table');
     pairs.forEach(function (pair) {
         let input = pair[0]
