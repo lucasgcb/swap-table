@@ -5,7 +5,7 @@ function swapValues(){
     output.value = input.value
     pairs.forEach(function(swapValue) {
       console.log(swapValue)
-      output.value = output.value.replace(swapValue[0], swapValue[1])
+      output.value = output.value.replaceAll(swapValue[0], swapValue[1])
     })
 }
 
