@@ -32,14 +32,15 @@ function insertSwapValue(){
     let table = document.getElementById('swap-table');
     let input = document.getElementById('from-value').value
     let output = document.getElementById('to-value').value
-    var row = table.insertRow(0);
+    let row = table.insertRow(0);
+    let cell1 = row.insertCell(0);
+    let cell2 = row.insertCell(1);
+    let cell3 = row.insertCell(2);
+    buttonClass = "btn-primary"
     row.id = Date.now()
-    var cell1 = row.insertCell(0);
-    var cell2 = row.insertCell(1);
-    var cell3 = row.insertCell(2);
     cell1.innerHTML = input;
-    cell2.innerHTML = output;1
-    cell3.innerHTML = '<button onclick=removePair(' + row.id + ') class="remove-button">X</button></td>'
+    cell2.innerHTML = output;
+    cell3.innerHTML = '<button onclick=removePair(' + row.id + ') class=' + buttonClass + '>X</button>'
 }
 
 
