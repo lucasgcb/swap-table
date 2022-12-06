@@ -1,7 +1,11 @@
 function swap(){
     let input = document.getElementById('input-box')
     let output = document.getElementById('output-box')
-    output.value = input.value.replace()
+    let values = getSwapValues()    
+    output.value = input.value
+    for (const swapValue in values) {
+        output.replace(swapValue[0], swapValue[1])
+    }
 }
 
 function getSwapValues()
@@ -9,8 +13,11 @@ function getSwapValues()
     let table = document.getElementById('swap-table');
     let swapValues = []
     for (var r = 0, n = table.rows.length; r < n; r++) {
-        for (var c = 0, m = table.rows[r].cells.length; c < m; c++) {
-            swapValues.push(table.rows[r].cells[c].innerHTML);
+        for (var c = 0, m = table.rows[r].cells.length / 2; c < m; c++) {
+            let fromValue = table.rows[r].cells[c].innerHTML
+            let toValue = table.rows[r].cells[c+1].innerHTML
+            swapPair = [fromValue,toValue]
+            swapValues.push(swapPair);
         }
     }
     return swapValues
@@ -29,5 +36,5 @@ function insertSwapValue(){
 
 insert = document.getElementById('insert');
 swap = document.getElementById('swap');
-insert.addEventListener('click', insert);
+insert.addEventListener('click', insertSwapValue);
 swap.addEventListener("click", swap);
