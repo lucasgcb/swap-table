@@ -73,7 +73,7 @@ function insertSwapValue() {
     let input = document.getElementById('from-value').value
     let output = document.getElementById('to-value').value
     checkPair = [input, output]
-    checkInversePair = [input, output]
+    checkInversePair = [output, input]
     currentPairs = getSwapPairs()
     if (arrayIsInArray(checkPair, currentPairs))
     {
