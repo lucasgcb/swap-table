@@ -73,12 +73,18 @@ function insertSwapValue() {
     let input = document.getElementById('from-value').value
     let output = document.getElementById('to-value').value
     checkPair = [input, output]
+    checkInversePair = [input, output]
     currentPairs = getSwapPairs()
     if (arrayIsInArray(checkPair, currentPairs))
     {
-        Swal.fire(`Entry already exists: ${checkPair.join()}`)
+        Swal.fire(`Entry already exists: ${checkPair.join('->')}`)
+        return 
     }
-
+    if (arrayIsInArray(checkInversePair, currentPairs))
+    {
+        Swal.fire(`Inverse of entry already exists: ${checkPair.join('->')}`)
+        return 
+    }
     insertRow(input, output, table)
 }
 
