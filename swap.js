@@ -57,10 +57,28 @@ function loadTable(pairs) {
     })
 }
 
+function arrayIsInArray(arrayToCheck,arrayOfArrays){
+    exists = false
+    arrayToCheckString = arrayToCheck.join()
+    arrayOfArrays.forEach(function (array) {
+        arrayThatExistsString = array.join()
+        if (arrayToCheckString == arrayThatExistsString)
+            exists = true
+    })
+    return exists
+}
+
 function insertSwapValue() {
     let table = document.getElementById('swap-table');
     let input = document.getElementById('from-value').value
     let output = document.getElementById('to-value').value
+    checkPair = [input, output]
+    currentPairs = getSwapPairs()
+    if (arrayIsInArray(checkPair, currentPairs))
+    {
+        Swal.fire(`Entry already exists: ${checkPair.join()}`)
+    }
+
     insertRow(input, output, table)
 }
 
