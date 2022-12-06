@@ -9,12 +9,12 @@ function swapValues(){
     })
 }
 
-function removePair(value)
+function removePair(rowId)
 {
-    if(!value)
-        value = 0
-    let table = document.getElementById('swap-table');
-    table.deleteRow(value)
+    if(!rowId)
+        rowId = "row-0"
+    var row = document.getElementById(rowId);
+    row.parentNode.removeChild(row);
 }
 
 function getSwapPairs()
@@ -35,13 +35,13 @@ function insertSwapValue(){
     let input = document.getElementById('from-value').value
     let output = document.getElementById('to-value').value
     var row = table.insertRow(0);
+    row.id = Date.now()
     var cell1 = row.insertCell(0);
     var cell2 = row.insertCell(1);
     var cell3 = row.insertCell(2);
     cell1.innerHTML = input;
-    cell2.innerHTML = output;
-    rowToRemove = table.rows.length - 1
-    cell3.innerHTML = '<button onclick=removePair(' + rowToRemove + ') class="remove-button">X</button></td>'
+    cell2.innerHTML = output;1
+    cell3.innerHTML = '<button onclick=removePair(' + row.id + ') class="remove-button">X</button></td>'
 }
 
 
