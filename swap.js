@@ -16,7 +16,7 @@ function getSwapPairs()
         let fromValue = table.rows[r].cells[0].innerHTML
         let toValue = table.rows[r].cells[1].innerHTML
         swapPair = [fromValue,toValue]
-        swapPair.push(swapPair);
+        swapPairs.push(swapPair);
     }
     return swapPairs
 }
