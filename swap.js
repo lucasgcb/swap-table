@@ -15,6 +15,11 @@ function checkStorageAndLoad(){
         loadTable(storageTablePairs)
 }
 
+function decodeHtml(html) {
+    var txt = document.createElement("textarea");
+    txt.innerHTML = html;
+    return txt.value;
+}
 
 function setTable() {
     let pairs = getSwapPairs()
@@ -93,8 +98,8 @@ function arrayIsInArray(arrayToCheck,arrayOfArrays){
 
 function insertSwapValue() {
     let table = document.getElementById('swap-table');
-    let input = document.getElementById('from-value').value
-    let output = document.getElementById('to-value').value
+    let input = decodeHtml(document.getElementById('from-value').value)
+    let output = decodeHtml(document.getElementById('to-value').value)
     checkPair = [input, output]
     checkInversePair = [output, input]
     currentPairs = getSwapPairs()
