@@ -38,9 +38,10 @@ function insertSwapValue(){
     let cell3 = row.insertCell(2);
     buttonClass = "btn-primary"
     row.id = Date.now()
+    cell1.className = "first-cell"
     cell1.innerHTML = input;
     cell2.innerHTML = output;
-    cell3.innerHTML = '<button onclick=removePair(' + row.id + ') class=' + buttonClass + '>X</button>'
+    cell3.innerHTML = '<button onclick=removePair(' + row.id + ') class=' + buttonClass + '>Delete</button>'
 }
 
 
