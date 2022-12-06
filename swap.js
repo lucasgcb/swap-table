@@ -28,6 +28,13 @@ function removePair(rowId) {
     row.parentNode.removeChild(row);
 }
 
+function deleteTable() {
+    let table = document.getElementById('swap-table');
+    for (var r = 0, n = table.rows.length; r < n; r++) {
+        table.deleteRow(0)
+    }
+}
+
 function getSwapPairs() {
     let table = document.getElementById('swap-table');
     let swapPairs = []
@@ -41,11 +48,8 @@ function getSwapPairs() {
 }
 
 function loadTable(pairs) {
-    var demoRow = document.getElementById("row-0");
-    if (typeof (demoRow) != 'undefined' && demoRow != null) {
-        removePair('row-0')
-    }
     let table = document.getElementById('swap-table');
+    deleteTable()
     pairs.forEach(function (pair) {
         let input = pair[0]
         let output = pair[1]
