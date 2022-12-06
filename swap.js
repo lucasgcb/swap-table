@@ -7,6 +7,7 @@ function swapValues() {
         console.log(swapValue)
         output.value = output.value.replaceAll(swapValue[0], swapValue[1])
     })
+    output.value = decodeHtml(output.value)
 }
 
 function checkStorageAndLoad(){
