@@ -1,26 +1,24 @@
-function swap(){
+function swapValues(){
     let input = document.getElementById('input-box')
     let output = document.getElementById('output-box')
-    let values = getSwapValues()    
+    let pairs = getSwapPairs()    
     output.value = input.value
     for (const swapValue in values) {
         output.replace(swapValue[0], swapValue[1])
     }
 }
 
-function getSwapValues()
+function getSwapPairs()
 {
     let table = document.getElementById('swap-table');
-    let swapValues = []
+    let swapPairs = []
     for (var r = 0, n = table.rows.length; r < n; r++) {
-        for (var c = 0, m = table.rows[r].cells.length / 2; c < m; c++) {
-            let fromValue = table.rows[r].cells[c].innerHTML
-            let toValue = table.rows[r].cells[c+1].innerHTML
-            swapPair = [fromValue,toValue]
-            swapValues.push(swapPair);
-        }
+        let fromValue = table.rows[r].cells[0].innerHTML
+        let toValue = table.rows[r].cells[1].innerHTML
+        swapPair = [fromValue,toValue]
+        swapPair.push(swapPair);
     }
-    return swapValues
+    return swapPairs
 }
 
 function insertSwapValue(){
@@ -34,7 +32,7 @@ function insertSwapValue(){
     cell2.innerHTML = output;
 }
 
-insert = document.getElementById('insert');
-swap = document.getElementById('swap');
-insert.addEventListener('click', insertSwapValue);
-swap.addEventListener("click", swap);
+insertButton = document.getElementById('insert-button');
+swapButton = document.getElementById('swap-button');
+insertButton.addEventListener('click', insertSwapValue);
+swapButton.addEventListener("click", swapValues);
