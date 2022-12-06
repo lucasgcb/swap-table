@@ -57,6 +57,17 @@ function loadTable(pairs) {
     })
 }
 
+function firstCharacterIsInArray(arrayToCheck,arrayOfArrays){
+    exists = false
+    arrayToCheckString = arrayToCheck[0]
+    arrayOfArrays.forEach(function (array) {
+        arrayThatExistsString = array[0]
+        if (arrayToCheckString == arrayThatExistsString)
+            exists = true
+    })
+    return exists
+}
+
 function arrayIsInArray(arrayToCheck,arrayOfArrays){
     exists = false
     arrayToCheckString = arrayToCheck.join()
@@ -79,6 +90,11 @@ function insertSwapValue() {
     {
         Swal.fire(`Entry already exists: ${checkPair.join('->')}`)
         return 
+    }
+    if (firstCharacterIsInArray(checkPair, currentPairs))
+    {
+        Swal.fire(`Entry already exists for: ${checkPair[0]}`)
+        return
     }
     if (arrayIsInArray(checkInversePair, currentPairs))
     {
