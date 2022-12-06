@@ -20,7 +20,7 @@ function setTable() {
 function getTable() {
     pairsJSON = localStorage.getItem('table')
     pairs = JSON.parse(pairsJSON)
-    insertStoredTable(pairs)
+    return pairs
 }
 
 function removePair(rowId) {
@@ -40,9 +40,9 @@ function getSwapPairs() {
     return swapPairs
 }
 
-function insertStoredTable(pairs) {
+function loadTable(pairs) {
     var demoRow = document.getElementById("row-0");
-    if(typeof(demoRow) != 'undefined' && demoRow != null){
+    if (typeof (demoRow) != 'undefined' && demoRow != null) {
         removePair('row-0')
     }
     let table = document.getElementById('swap-table');
@@ -75,6 +75,15 @@ function insertRow(input, output, table) {
     cell3.innerHTML = '<button onclick=removePair(' + row.id + ') class=' + buttonClass + '>Delete</button>'
 }
 
+function checkChanges(event) {
+    currentTable = getSwapPairs()
+    storageTable = getTable()
+    if (currentTable.join() != storageTable.join()) {
+        event.preventDefault();
+        event.returnValue = '';
+    }
+}
+
 saveButton = document.getElementById('save-button');
 loadButton = document.getElementById('load-button');
 removeButton = document.getElementById('example-remove');
@@ -84,4 +93,5 @@ insertButton.addEventListener('click', insertSwapValue);
 removeButton.addEventListener('click', function () { removePair('row-0') })
 swapButton.addEventListener("click", swapValues);
 saveButton.addEventListener("click", setTable);
-loadButton.addEventListener("click", getTable);
+loadButton.addEventListener("click", function () { loadTable(getTable()) });
+window.addEventListener('beforeunload', checkChanges);
