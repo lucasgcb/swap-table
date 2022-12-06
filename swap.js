@@ -9,6 +9,14 @@ function swapValues(){
     })
 }
 
+function removePair(value)
+{
+    if(!value)
+        value = 0
+    let table = document.getElementById('swap-table');
+    table.deleteRow(value)
+}
+
 function getSwapPairs()
 {
     let table = document.getElementById('swap-table');
@@ -29,11 +37,17 @@ function insertSwapValue(){
     var row = table.insertRow(0);
     var cell1 = row.insertCell(0);
     var cell2 = row.insertCell(1);
+    var cell3 = row.insertCell(2);
     cell1.innerHTML = input;
     cell2.innerHTML = output;
+    rowToRemove = table.rows.length - 1
+    cell3.innerHTML = '<button onclick=removePair(' + rowToRemove + ') class="remove-button">X</button></td>'
 }
 
+
+removeButton = document.getElementById('example-remove');
 insertButton = document.getElementById('insert-button');
 swapButton = document.getElementById('swap-button');
 insertButton.addEventListener('click', insertSwapValue);
+removeButton.addEventListener('click', removePair)
 swapButton.addEventListener("click", swapValues);
