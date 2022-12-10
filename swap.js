@@ -1,6 +1,6 @@
-function swapValues() {
-    let input = document.getElementById('input-box')
-    let output = document.getElementById('output-box')
+function swapValues(input_element, output_element) {
+    let input = input_element
+    let output = output_element
     let pairs = getSwapPairs()
     output.value = input.value
     pairs.forEach(function (swapValue) {
@@ -10,7 +10,8 @@ function swapValues() {
     output.value = decodeHtml(output.value)
 }
 
-function checkStorageAndLoad(){
+
+function checkStorageAndLoad() {
     storageTablePairs = getTable()
     if (storageTablePairs)
         loadTable(storageTablePairs)
@@ -31,7 +32,7 @@ function setTable() {
         title: 'Saved',
         text: 'Your swap table has been saved!',
         footer: '<a href="">It will be here when you come back later.</a>'
-      })
+    })
 }
 
 
@@ -75,7 +76,7 @@ function loadTable(pairs) {
     })
 }
 
-function firstCharacterIsInArray(arrayToCheck,arrayOfArrays){
+function firstCharacterIsInArray(arrayToCheck, arrayOfArrays) {
     exists = false
     arrayToCheckString = arrayToCheck[0]
     arrayOfArrays.forEach(function (array) {
@@ -86,7 +87,7 @@ function firstCharacterIsInArray(arrayToCheck,arrayOfArrays){
     return exists
 }
 
-function arrayIsInArray(arrayToCheck,arrayOfArrays){
+function arrayIsInArray(arrayToCheck, arrayOfArrays) {
     exists = false
     arrayToCheckString = arrayToCheck.join()
     arrayOfArrays.forEach(function (array) {
@@ -104,20 +105,17 @@ function insertSwapValue() {
     checkPair = [input, output]
     checkInversePair = [output, input]
     currentPairs = getSwapPairs()
-    if (arrayIsInArray(checkPair, currentPairs))
-    {
+    if (arrayIsInArray(checkPair, currentPairs)) {
         Swal.fire(`Entry already exists: ${checkPair.join('->')}`)
-        return 
+        return
     }
-    if (firstCharacterIsInArray(checkPair, currentPairs))
-    {
+    if (firstCharacterIsInArray(checkPair, currentPairs)) {
         Swal.fire(`Entry already exists for: ${checkPair[0]}`)
         return
     }
-    if (arrayIsInArray(checkInversePair, currentPairs))
-    {
+    if (arrayIsInArray(checkInversePair, currentPairs)) {
         Swal.fire(`Inverse of entry already exists: ${checkPair.join('->')}`)
-        return 
+        return
     }
     insertRow(input, output, table)
 }
@@ -151,9 +149,11 @@ loadButton = document.getElementById('load-button');
 removeButton = document.getElementById('example-remove');
 insertButton = document.getElementById('insert-button');
 swapButton = document.getElementById('swap-button');
+swapButton = document.getElementById('unswap-button');
 insertButton.addEventListener('click', insertSwapValue);
 removeButton.addEventListener('click', function () { removePair('row-0') })
-swapButton.addEventListener("click", swapValues);
+swapButton.addEventListener("click", function () { swapValues(document.getElementById('input-box'), document.getElementById('output-box')) });
+unswapButton.addEventListener("click", function () { swapValues(document.getElementById('output-box'), document.getElementById('input-box')) });
 saveButton.addEventListener("click", setTable);
 loadButton.addEventListener("click", function () { loadTable(getTable()) });
 window.addEventListener('beforeunload', checkChanges);
