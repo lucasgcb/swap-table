@@ -149,11 +149,11 @@ loadButton = document.getElementById('load-button');
 removeButton = document.getElementById('example-remove');
 insertButton = document.getElementById('insert-button');
 swapButton = document.getElementById('swap-button');
-swapButton = document.getElementById('unswap-button');
+unSwapButton = document.getElementById('unswap-button');
 insertButton.addEventListener('click', insertSwapValue);
 removeButton.addEventListener('click', function () { removePair('row-0') })
 swapButton.addEventListener("click", function () { swapValues(document.getElementById('input-box'), document.getElementById('output-box')) });
-unswapButton.addEventListener("click", function () { swapValues(document.getElementById('output-box'), document.getElementById('input-box')) });
+unSwapButton.addEventListener("click", function () { swapValues(document.getElementById('output-box'), document.getElementById('input-box')) });
 saveButton.addEventListener("click", setTable);
 loadButton.addEventListener("click", function () { loadTable(getTable()) });
 window.addEventListener('beforeunload', checkChanges);
