@@ -2,7 +2,7 @@ function swapValues(input_element, output_element) {
     let input = input_element
     let output = output_element
     let pairs = getSwapPairs()
-    original_output = original_output.value
+    let original_output = output.value
     output.value = input.value
     pairs.forEach(function (swapValue) {
         console.log(swapValue)
