@@ -2,12 +2,14 @@ function swapValues(input_element, output_element) {
     let input = input_element
     let output = output_element
     let pairs = getSwapPairs()
+    temp = input.value
     output.value = input.value
     pairs.forEach(function (swapValue) {
         console.log(swapValue)
         output.value = output.value.replaceAll(swapValue[0], swapValue[1])
     })
     output.value = decodeHtml(output.value)
+    input.value = decodeHtml(temp)
 }
 
 
