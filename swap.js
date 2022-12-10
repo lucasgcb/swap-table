@@ -1,27 +1,18 @@
 function swapValues() {
-    let input = document.getElementById('input-box')
-    let output = document.getElementById('output-box')
-    let pairs = getSwapPairs()
-    output.value = input.value
-    pairs.forEach(function (swapValue) {
-        console.log(swapValue)
-        output.value = output.value.replaceAll(swapValue[0], swapValue[1])
-    })
-    output.value = decodeHtml(output.value)
-}
-
-function unSwapValues(input_element, output_element) {
     let input = document.getElementById('output-box')
     let output = document.getElementById('input-box')
     let pairs = getSwapPairs()
+    let temp_output_value = output.value
     output.value = input.value
+    input.value = temp_output_value
     pairs.forEach(function (swapValue) {
         console.log(swapValue)
         output.value = output.value.replaceAll(swapValue[1], swapValue[0])
+        input.value = input.value.replaceAll(swapValue[0], swapValue[1])
     })
     output.value = decodeHtml(output.value)
+    input.value = decodeHtml(input.value)
 }
-
 
 
 function checkStorageAndLoad() {
@@ -162,11 +153,9 @@ loadButton = document.getElementById('load-button');
 removeButton = document.getElementById('example-remove');
 insertButton = document.getElementById('insert-button');
 swapButton = document.getElementById('swap-button');
-unSwapButton = document.getElementById('unswap-button');
 insertButton.addEventListener('click', insertSwapValue);
 removeButton.addEventListener('click', function () { removePair('row-0') })
 swapButton.addEventListener("click", swapValues);
-unSwapButton.addEventListener("click", unSwapValues);
 saveButton.addEventListener("click", setTable);
 loadButton.addEventListener("click", function () { loadTable(getTable()) });
 window.addEventListener('beforeunload', checkChanges);
