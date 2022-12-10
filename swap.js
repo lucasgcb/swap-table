@@ -2,28 +2,24 @@ function swapValues() {
     let input = document.getElementById('input-box')
     let output = document.getElementById('output-box')
     let pairs = getSwapPairs()
-    let original_output = output.value
     output.value = input.value
     pairs.forEach(function (swapValue) {
         console.log(swapValue)
         output.value = output.value.replaceAll(swapValue[0], swapValue[1])
     })
     output.value = decodeHtml(output.value)
-    input.value = decodeHtml(original_output)
 }
 
 function unSwapValues(input_element, output_element) {
     let input = document.getElementById('output-box')
     let output = document.getElementById('input-box')
     let pairs = getSwapPairs()
-    let original_output = output.value
     output.value = input.value
     pairs.forEach(function (swapValue) {
         console.log(swapValue)
         output.value = output.value.replaceAll(swapValue[1], swapValue[0])
     })
     output.value = decodeHtml(output.value)
-    input.value = decodeHtml(original_output)
 }
 
 
